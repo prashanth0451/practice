@@ -1,0 +1,11 @@
+<% if @blog.errors.count > 0 %>
+	<% @blog.errors.full_messages.each do |error| %>
+		<p class="alert"><%= error %></p>
+	<% end %>
+<% end %>
+<%= form_for @blog do |f| %>
+	<%= f.text_field :title %><br/>
+	<%= f.file_field :image %>
+	<%= f.text_area :content %><br/>
+	<%= f.submit %>
+<% end %>

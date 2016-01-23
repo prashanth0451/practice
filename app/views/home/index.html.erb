@@ -1,0 +1,11 @@
+<ul>
+	<% @blogs.each do |blog| %>
+		<li
+			<% if blog.status == true %>
+			style="color: #0f0;"
+			<% else %>
+			style="color: #f00;"
+			<% end %>
+		><%= blog.title %> => <%= blog.status %></li>
+	<% end %>
+</ul>

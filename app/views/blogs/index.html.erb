@@ -1,0 +1,11 @@
+<h1>Blogs | <%= link_to 'New', new_blog_path %></h1>
+<% @blogs.each do |blog| %>
+	<article>
+		<h3><%= link_to blog.title, blog_path(blog) %> 
+			<%# if blog.user == current_user %>
+			| <%= link_to 'Edit', edit_blog_path(blog) %> | <%= link_to 'Delete', blog_path(blog), method: :delete, data: {confirm: "Are you sure?"} %>
+			<%# end %>
+		</h3>
+		<p><%= blog.content %></p>
+	</article>
+<% end %>

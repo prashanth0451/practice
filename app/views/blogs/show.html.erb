@@ -1,0 +1,17 @@
+<h1><%= @blog.title %></h1>
+<em>by <%= @blog.user.email %></em>
+<%= image_tag @blog.image.url %>
+<p><%= @blog.content %></p>
+<h2>Comments: </h2>
+<% @blog.comments.each do |comment| %>
+<p><%= comment.author %> says "<%= comment.comment %>" at <%= comment.created_at %>
+	<% if comment.user == current_user %>
+ <%= link_to 'X', blogs_comment_delete_path(comment), method: :delete, data: {confirm: "Are you sure?"} %></p>
+ <% end %>
+<% end %>
+<%= form_for @comment, url: blogs_comment_path(@blog) do |f| %>
+<%= f.text_field :author %>
+<%= f.text_area :comment %>
+<%= f.submit %>
+<% end %>
+<%= link_to 'Back', root_path %>
